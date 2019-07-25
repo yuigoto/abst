@@ -1,6 +1,6 @@
 {
   "name": "@yuigoto/abst",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Abstract JavaScript classes for general use and standardization.",
   "main": "dist/index.js",
   "publishConfig": {
