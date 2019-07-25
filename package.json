@@ -1,13 +1,13 @@
 {
   "name": "@yuigoto/abst",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Abstract JavaScript classes for general use and standardization.",
   "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "build": "webpack --mode production",
-    "version": "npm run build && git add -A dist",
-    "postversion": "git push && git push --tags && rm -rf build/temp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
