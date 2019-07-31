@@ -21,6 +21,9 @@
  * @since     0.0.1
  */
 export class AbstractRequestHandler {
+  // Private Properties
+  // --------------------------------------------------------------------
+  
   /**
    * Base URL used for requests.
    * 
