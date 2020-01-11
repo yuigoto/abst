@@ -24,6 +24,11 @@ import {
  * @since     0.0.1
  */
 export abstract class AbstractRequestHandler {
+  /**
+   * Class index signature, so we won't have any implicitAny errors.
+   */
+  [key: string]: any;
+  
   // PRIVATE PROPERTIES
   // --------------------------------------------------------------------
 
@@ -84,6 +89,34 @@ export abstract class AbstractRequestHandler {
         `Abstract class '${name}' cannot be instantiated on its own.`
       );
     }
+
+    /**
+     * Stores the method list that child-classes must declare.
+     *
+     * Each array has the following index values:
+     * - 0: the method name;
+     * - 1: the method parameters, separated by commas;
+     */
+    let methodList: any[] = [
+      ["request", "endpoint, data, method, headers"],
+      ["requestUrl", "url, data, method, headers"]
+    ];
+    
+    // Check method existence
+    for (let n = 0; n < methodList.length; n++) {
+      let _method: any[] = methodList[n];
+      if (this[_method[0]] === undefined) {
+        if (!_method[1]) _method[1] = "";
+
+        throw new TypeError(
+          `Classes extending '${name}' must declare the '${_method[0]}(${_method[1]})' method.`
+        );
+      }
+      
+      this[_method[0]] = this[_method[0]].bind(this);
+    }
+    
+    this.setBaseUrl(baseUrl);
   }
 
   // GETTERS + SETTERS
