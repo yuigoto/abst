@@ -1,6 +1,6 @@
 {
   "name": "@yuigoto/abst",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Abstract JavaScript/TypeScripts used to standardize objects and other actions.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

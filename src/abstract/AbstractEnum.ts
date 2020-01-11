@@ -1,5 +1,5 @@
-import { EnumObject } from "core/Types";
-import { AbstractSingleton } from "abstract/AbstractSingleton";
+import { EnumObject } from "../core/Types";
+import { AbstractSingleton } from "../abstract/AbstractSingleton";
 
 /**
  * abstract/AbstractEnum

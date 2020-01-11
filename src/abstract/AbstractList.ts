@@ -1,9 +1,9 @@
-import { AbstractSingleton } from "abstract/AbstractSingleton";
+import { AbstractSingleton } from "../abstract/AbstractSingleton";
 import { 
   ListObject, 
   ListObjectItem, 
   JsonObject 
-} from "core/Types";
+} from "../core/Types";
 
 /**
  * abstract/AbstractList
