@@ -1,7 +1,12 @@
-import { AbstractSingleton } from "./AbstractSingleton";
+import { AbstractSingleton } from "abstract/AbstractSingleton";
+import { 
+  ListObject, 
+  ListObjectItem, 
+  JsonObject 
+} from "core/Types";
 
 /**
- * Core/Abstract/AbstractList
+ * abstract/AbstractList
  * ----------------------------------------------------------------------
  * Sets basic definitions for a data list/dictionary-like object, which
  * works almost the same way as `AbstractEnum`. Instead of numbers, though,
@@ -14,281 +19,271 @@ import { AbstractSingleton } from "./AbstractSingleton";
  *
  * Additional attributes are optional, main attributes must be DISTINCT.
  *
- * Being an `Abstract` class, it can't be directly instantiated.
+ * Being an `Abstract` class, it can't (or shouldn't) be directly instantiated.
  *
  * @author    Fabio Y. Goto <lab@yuiti.dev>
  * @since     0.0.1
  */
-export class AbstractList extends AbstractSingleton {
-  // Lifecycle
+export abstract class AbstractList extends AbstractSingleton {
+  // LIFECYCLE
   // --------------------------------------------------------------------
-
+  
   /**
    * Constructor.
-   *
-   * @param {Object} listObject
-   *     Hashmap-like object with items for the list
+   * 
+   * @param listObject 
+   *     Hashmap-like object, whose properties will be added to this list 
    */
-  constructor (listObject) {
+  constructor (listObject: ListObject) {
     super();
-
-    let constructorName = this.constructor.name;
-    if (this.constructor.name === "AbstractList") {
+    
+    let name: String = (this.constructor as typeof AbstractList).name;
+    if (name === "AbstractList") {
       throw new TypeError(
-        `Abstract class '${constructorName}' cannot be instantiated on its own.`
+        `Abstract class '${name}' cannot be instantiated on its own.`
       );
     }
-
-    // Adds items
-    if (Object.keys(this).length === 0) {
-      for (let key of Object.keys(listObject)) {
-        let curr = listObject[key],
-            exists = Object.values(this).filter((item) => {
-              return (
-                item.id === curr.id
-                || item.name === curr.name
-                || item.slug === curr.slug
+    
+    let selfKeys: string[] = Object.keys(this),
+        selfVals: ListObjectItem[] = Object.keys(this).map((key) => this[key]), 
+        listKeys: string[] = Object.keys(listObject);
+        
+    if (selfKeys.length === 0) {
+      for (let key of listKeys) {
+        try {
+          let curr: ListObjectItem = listObject[key], 
+              exists: ListObjectItem[] = selfVals.filter(
+                (item: ListObjectItem) => {
+                  return (
+                    item.id === curr.id 
+                      || item.name === curr.name 
+                      || item.slug === curr.slug
+                  );
+                }
               );
-            });
-
-        // Validate base properties
-        if (
-          !curr.hasOwnProperty("id")
-          || !curr.hasOwnProperty("name")
-          || !curr.hasOwnProperty("slug")
-        ) {
-          throw new TypeError(
-            `'${constructorName}' items must have an 'id', 'name' and 'slug' properties.`
-          );
+              
+          if (
+            !curr.hasOwnProperty("id") 
+              || !curr.hasOwnProperty("name") 
+              || !curr.hasOwnProperty("slug") 
+          ) {
+            throw new TypeError(
+              `'${name}' items must have an 'id', 'name' and 'slug' properties.`
+            );
+          } else {
+            
+          }
+          
+          if (
+            selfKeys.indexOf(key) > -1 
+              || exists.length > 0
+          ) {
+            throw new TypeError(
+              `'${name}' items must have distinct keys and values.`
+            );
+          }
+          
+          this[key] = curr;
+        
+          selfKeys = Object.keys(this);
+          selfVals = Object.keys(this).map((key) => this[key]);
+        } catch (e) {
+          console.error(e);
         }
-
-        // MUST BE DISTINCT
-        if (this[key] !== undefined && exists.length > 0) {
-          throw new TypeError(
-            `'${constructorName}' items must be distinct.`
-          );
-        }
-
-        this[key] = curr;
       }
     }
   }
 
-  // Public Methods
+  // PUBLIC METHODS
   // --------------------------------------------------------------------
-
+  
   /**
    * Returns the `id` of the object by its `key`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Key associated with the object
-   * @returns {Number}
    */
-  getIdByKey (value) {
+  public getIdByKey (value: string): number {
     return this._getBy("id", "key", value);
   }
-
+  
   /**
    * Returns the `id` of the object by its `name`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Object name
-   * @returns {Number}
    */
-  getIdByName (value) {
+  public getIdByName (value: string): number {
     return this._getBy("id", "name", value);
   }
-
+  
   /**
    * Returns the `id` of the object by its `slug`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Object slug
-   * @returns {Number}
    */
-  getIdBySlug (value) {
+  public getIdBySlug (value: string): number {
     return this._getBy("id", "slug", value);
   }
-
+  
   /**
    * Returns the `name` of the object by its `id`.
-   *
-   * @param {String|Number} value
+   * 
+   * @param value 
    *     Object ID
-   * @returns {String}
    */
-  getNameById (value) {
-    value = (typeof value === "string") ? parseInt(value) : value;
+  public getNameById (value: number): string {
     return this._getBy("name", "id", value);
   }
-
+  
   /**
    * Returns the `name` of the object by its `slug`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Object slug
-   * @returns {String}
    */
-  getNameBySlug (value) {
+  public getNameBySlug (value: string): string {
     return this._getBy("name", "slug", value);
   }
-
+  
   /**
    * Returns the `name` of the object by its `key`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Key associated with the object
-   * @returns {String}
    */
-  getNameByKey (value) {
+  public getNameByKey (value: string): string {
     return this._getBy("name", "key", value);
   }
-
+  
   /**
    * Returns the `slug` of the object by its `id`.
-   *
-   * @param {String|Number} value
+   * 
+   * @param value 
    *     Object ID
-   * @returns {String}
    */
-  getSlugById (value) {
-    value = (typeof value === "string") ? parseInt(value) : value;
+  public getSlugById (value: number): string {
     return this._getBy("slug", "id", value);
   }
-
+  
   /**
    * Returns the `slug` of the object by its `name`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Object name
-   * @returns {String}
    */
-  getSlugByName (value) {
+  public getSlugByName (value: string): string {
     return this._getBy("slug", "name", value);
   }
-
+  
   /**
    * Returns the `slug` of the object by its `key`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Key associated with the object
-   * @returns {String}
    */
-  getSlugByKey (value) {
+  public getSlugByKey (value: string): string {
     return this._getBy("slug", "key", value);
   }
-
+  
   /**
    * Returns the `key` associated with the object by its `id`.
-   *
-   * @param {String|Number} value
+   * 
+   * @param value 
    *     Object ID
-   * @returns {String}
    */
-  getKeyById (value) {
-    value = (typeof value === "string") ? parseInt(value) : value;
+  public getKeyById (value: number): string {
     return this._getBy("key", "id", value);
   }
-
+  
   /**
    * Returns the `key` associated with the object by its `name`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Object name
-   * @returns {String}
    */
-  getKeyByName (value) {
+  public getKeyByName (value: string): string {
     return this._getBy("key", "name", value);
   }
-
+  
   /**
    * Returns the `key` associated with the object by its `slug`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Object slug
-   * @returns {String}
    */
-  getKeyBySlug (value) {
+  public getKeyBySlug (value: string): string {
     return this._getBy("key", "slug", value);
   }
-
+  
   /**
    * Returns the `object` itself by its `id`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Object id
-   * @returns {Object}
    */
-  getObjectById (value) {
+  public getObjectById (value: number): ListObjectItem {
     return this._getBy("object", "id", value);
   }
-
+  
   /**
    * Returns the `object` itself by its `name`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Object name
-   * @returns {Object}
    */
-  getObjectByName (value) {
+  public getObjectByName (value: string): ListObjectItem {
     return this._getBy("object", "name", value);
   }
-
+  
   /**
    * Returns the `object` itself by its `slug`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Object slug
-   * @returns {Object}
    */
-  getObjectBySlug (value) {
+  public getObjectBySlug (value: string): ListObjectItem {
     return this._getBy("object", "slug", value);
   }
-
+  
   /**
    * Returns the `object` itself by its `key`.
-   *
-   * @param {String} value
+   * 
+   * @param value 
    *     Key associated with the object
-   * @returns {Object}
    */
-  getObjectByKey (value) {
+  public getObjectByKey (value: string): ListObjectItem {
     return this._getBy("object", "key", value);
   }
 
   /**
-   * Returns a POJO from this class' instance, overriding the default
-   * `toJSON()` method.
-   *
-   * @returns {Object}
+   * Returns a POJO representation of this class' object, this is called when
+   * `JSON.stringify` is used on an instance of this class.
    */
-  toJSON () {
-    let returnable = {};
-
-    let keys = Object.keys(this);
+  public toJSON (): JsonObject {
+    let returnable: JsonObject = {},
+        keys: string[] = Object.keys(this);
+        
     for (let k = 0; k < keys.length; k++) {
-      if (this[keys[k]] !== undefined) {
-        returnable[keys[k]] = this[keys[k]];
-      }
+      if (this[keys[k]] !== undefined) returnable[keys[k]] = this[keys[k]];
     }
-
+    
     return returnable;
   }
 
   /**
-   * Overrides the base method for string conversion.
-   *
-   * @returns {String}
+   * Returns a string representation of an object, overrides default method.
    */
-  toString () {
+  public toString (): string {
     return `[object ${this.constructor.name}]`;
   }
 
-  // Private Methods
+  // PRIVATE METHODS
   // --------------------------------------------------------------------
 
   /**
-   * Genetic, catch-all, method used to return values from the list. All
+   * Generic catch-all method used to return values from the list. All
    * other methods use this one.
    *
    * Basically, it does a `Find X by the value of Y = Z`.
@@ -297,26 +292,25 @@ export class AbstractList extends AbstractSingleton {
    * - The object's `id`, `name` or `slug` properties;
    * - The object's associated `key` string;
    * - The whole `object` from the list;
-   *
-   * For comparing values, you can use the same arguments as `get`, save
-   * for `object`.
-   *
-   * @param {String} get
+   * 
+   * @param get 
    *     Which data should we return from the list item
-   * @param {String} by
+   * @param by 
    *     Which data should we compare to when selecting
-   * @param {String|Number} compare
+   * @param compare 
    *     Value to check when comparing
-   * @returns {String|Object|Number|Boolean}
-   * @private
    */
-  _getBy(get, by, compare) {
-    let keys = Object.keys(this);
+  protected getBy(
+    get: string, 
+    by: string, 
+    compare: any
+  ): string|number|boolean|ListObjectItem {
+    let keys: string[] = Object.keys(this);
 
     for (let k in keys) {
-      let key = keys[k],
-        obj = this[key],
-        should = false;
+      let key: string = keys[k],
+          obj: ListObjectItem = this[key],
+          should: boolean = false;
 
       if (get === "id") {
         // Returning `id`

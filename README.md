@@ -3,6 +3,9 @@
 
 > Exposes abstract interfaces/classes for general use and standardization of object types and other utilities.
 
+> **IMPORTANT!**:
+> Library source was updated to use TypeScript, so there might have breaking changes! Updating documentation as soon as I can!.
+
 Using
 -----
 
@@ -45,7 +48,7 @@ The code in this repository is licensed under the `MIT License`. Check the `LICE
 
 -----
 
-_©2019 Fabio Y. Goto_
+_©2019-2020 Fabio Y. Goto_
 
 -----
 

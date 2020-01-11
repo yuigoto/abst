@@ -1,7 +1,7 @@
 Authors
 =======
 
-- **Fabio Y. Goto** ([lab@yuiti.com.br][0])
+- **Fabio Y. Goto** ([lab@yuiti.dev][0])
 
 ## Contribuições
 
