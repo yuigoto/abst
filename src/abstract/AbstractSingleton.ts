@@ -1,4 +1,4 @@
-import { Extendable } from "core/Interfaces";
+import { Extendable } from "../core/Interfaces";
 
 /**
  * abstract/AbstractSingleton

@@ -1,12 +1,12 @@
-import { AbstractAuthentication } from "abstract/AbstractAuthentication";
-import { AbstractDocument } from "abstract/AbstractDocument";
-import { AbstractEnum } from "abstract/AbstractEnum";
-import { AbstractList } from "abstract/AbstractList";
-import { AbstractParser } from "abstract/AbstractParser";
-import { AbstractRequestHandler } from "abstract/AbstractRequestHandler";
-import { AbstractSingleton } from "abstract/AbstractSingleton";
-import { AbstractStore } from "abstract/AbstractStore";
-import { AbstractValidation } from "abstract/AbstractValidation";
+import { AbstractAuthentication } from "./abstract/AbstractAuthentication";
+import { AbstractDocument } from "./abstract/AbstractDocument";
+import { AbstractEnum } from "./abstract/AbstractEnum";
+import { AbstractList } from "./abstract/AbstractList";
+import { AbstractParser } from "./abstract/AbstractParser";
+import { AbstractRequestHandler } from "./abstract/AbstractRequestHandler";
+import { AbstractSingleton } from "./abstract/AbstractSingleton";
+import { AbstractStore } from "./abstract/AbstractStore";
+import { AbstractValidation } from "./abstract/AbstractValidation";
 
 export {  
   AbstractAuthentication, 
