@@ -1,5 +1,6 @@
 import { JsonObject } from "../core/Types";
 export declare abstract class AbstractValidation {
+    [key: string]: any;
     protected _input: any;
     constructor(input: any);
     get input(): any;

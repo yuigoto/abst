@@ -2,7 +2,8 @@ import { Url } from "@yuigoto/validators";
 import {
   Interceptor,
   RequestEndpoint,
-  StringHash
+  StringHash,
+  JsonObject
 } from "../core/Types";
 
 /**
@@ -497,6 +498,19 @@ export abstract class AbstractRequestHandler {
       /(^\/|\/$)/g,
       ""
     );
+  }
+  
+  /**
+   * Returns a POJO from this class' instance, overriding the default
+   * `toJSON()` method.
+   *
+   * @returns {Object}
+   */
+  public toJSON (): JsonObject {
+    return {
+      baseUrl: this.baseUrl,
+      headers: this.headers
+    };
   }
 
   /**
