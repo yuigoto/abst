@@ -1,7 +1,7 @@
 {
   "name": "@yuigoto/abst",
   "version": "0.1.0",
-  "description": "Abstract JavaScript/TypeScripts used to standardize objects.",
+  "description": "Abstract JavaScript/TypeScripts used to standardize objects and other actions.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/chai": "^4.2.7",
     "@types/mocha": "^5.2.7",
+    "@yuigoto/validators": "^0.5.0", 
     "chai": "^4.2.0",
     "mocha": "^7.0.0",
     "nodemon": "^2.0.2",
@@ -31,6 +32,8 @@
     "typescript": "^3.7.4"
   },
   "dependencies": {
+  },
+  "peerDependencies": {
     "@yuigoto/validators": "^0.5.0"
   }
 }
