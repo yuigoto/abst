@@ -1,5 +1,6 @@
 import { JsonObject } from "../core/Types";
 export declare abstract class AbstractDocument {
+    [key: string]: any;
     protected _input: any;
     protected _length: number;
     constructor(input: any, length: number);

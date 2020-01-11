@@ -1,4 +1,5 @@
 export declare abstract class AbstractStore {
+    [key: string]: any;
     constructor();
     abstract get(key: string): any;
     abstract getAll(): any;
