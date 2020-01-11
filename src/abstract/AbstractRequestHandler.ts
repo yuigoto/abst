@@ -3,7 +3,7 @@ import {
   Interceptor,
   RequestEndpoint,
   StringHash
-} from "core/Types";
+} from "../core/Types";
 
 /**
  * abstract/AbstractRequestHandler

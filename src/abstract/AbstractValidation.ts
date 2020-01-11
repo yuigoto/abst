@@ -1,4 +1,4 @@
-import { JsonObject } from "core/Types";
+import { JsonObject } from "../core/Types";
 
 export abstract class AbstractValidation {
   /**
