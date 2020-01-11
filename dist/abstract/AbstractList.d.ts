@@ -1,5 +1,5 @@
-import { AbstractSingleton } from "abstract/AbstractSingleton";
-import { ListObject, ListObjectItem, JsonObject } from "core/Types";
+import { AbstractSingleton } from "../abstract/AbstractSingleton";
+import { ListObject, ListObjectItem, JsonObject } from "../core/Types";
 export declare abstract class AbstractList extends AbstractSingleton {
     constructor(listObject: ListObject);
     getIdByKey(value: string): number;

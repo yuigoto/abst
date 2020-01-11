@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var AbstractSingleton_1 = require("abstract/AbstractSingleton");
+var AbstractSingleton_1 = require("../abstract/AbstractSingleton");
 var AbstractEnum = (function (_super) {
     __extends(AbstractEnum, _super);
     function AbstractEnum(enumerator) {
