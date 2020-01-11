@@ -1,22 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var AbstractAuthentication_1 = require("abstract/AbstractAuthentication");
+var AbstractAuthentication_1 = require("./abstract/AbstractAuthentication");
 exports.AbstractAuthentication = AbstractAuthentication_1.AbstractAuthentication;
-var AbstractDocument_1 = require("abstract/AbstractDocument");
+var AbstractDocument_1 = require("./abstract/AbstractDocument");
 exports.AbstractDocument = AbstractDocument_1.AbstractDocument;
-var AbstractEnum_1 = require("abstract/AbstractEnum");
+var AbstractEnum_1 = require("./abstract/AbstractEnum");
 exports.AbstractEnum = AbstractEnum_1.AbstractEnum;
-var AbstractList_1 = require("abstract/AbstractList");
+var AbstractList_1 = require("./abstract/AbstractList");
 exports.AbstractList = AbstractList_1.AbstractList;
-var AbstractParser_1 = require("abstract/AbstractParser");
+var AbstractParser_1 = require("./abstract/AbstractParser");
 exports.AbstractParser = AbstractParser_1.AbstractParser;
-var AbstractRequestHandler_1 = require("abstract/AbstractRequestHandler");
+var AbstractRequestHandler_1 = require("./abstract/AbstractRequestHandler");
 exports.AbstractRequestHandler = AbstractRequestHandler_1.AbstractRequestHandler;
-var AbstractSingleton_1 = require("abstract/AbstractSingleton");
+var AbstractSingleton_1 = require("./abstract/AbstractSingleton");
 exports.AbstractSingleton = AbstractSingleton_1.AbstractSingleton;
-var AbstractStore_1 = require("abstract/AbstractStore");
+var AbstractStore_1 = require("./abstract/AbstractStore");
 exports.AbstractStore = AbstractStore_1.AbstractStore;
-var AbstractValidation_1 = require("abstract/AbstractValidation");
+var AbstractValidation_1 = require("./abstract/AbstractValidation");
 exports.AbstractValidation = AbstractValidation_1.AbstractValidation;
 exports.default = {
     AbstractAuthentication: AbstractAuthentication_1.AbstractAuthentication,

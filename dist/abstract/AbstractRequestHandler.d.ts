@@ -1,4 +1,4 @@
-import { Interceptor, RequestEndpoint, StringHash } from "core/Types";
+import { Interceptor, RequestEndpoint, StringHash } from "../core/Types";
 export declare abstract class AbstractRequestHandler {
     protected _baseUrl: string;
     protected _headers: StringHash;
