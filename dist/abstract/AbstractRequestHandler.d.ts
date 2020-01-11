@@ -1,5 +1,6 @@
 import { Interceptor, RequestEndpoint, StringHash } from "../core/Types";
 export declare abstract class AbstractRequestHandler {
+    [key: string]: any;
     protected _baseUrl: string;
     protected _headers: StringHash;
     protected _dataInterceptors: Interceptor[];
