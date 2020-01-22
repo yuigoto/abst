@@ -1,4 +1,4 @@
-import { Interceptor, RequestEndpoint, StringHash } from "../core/Types";
+import { Interceptor, RequestEndpoint, StringHash, JsonObject } from "../core/Types";
 export declare abstract class AbstractRequestHandler {
     [key: string]: any;
     protected _baseUrl: string;
@@ -17,8 +17,8 @@ export declare abstract class AbstractRequestHandler {
     set errorInterceptors(value: Interceptor[]);
     get resultInterceptors(): Interceptor[];
     set resultInterceptors(value: Interceptor[]);
-    abstract request(endpoint: RequestEndpoint, data: any, method: string, headers?: StringHash): Promise<any>;
-    abstract requestUrl(url: string, data: any, method: string, headers?: StringHash): Promise<any>;
+    abstract request(endpoint: RequestEndpoint, data: any, method: string, headers?: StringHash, params?: StringHash): Promise<any>;
+    abstract requestUrl(url: string, data: any, method: string, headers?: StringHash, params?: StringHash): Promise<any>;
     addDataInterceptor(interceptor: Interceptor): number | boolean;
     applyDataInterceptors(data: any): any;
     removeDataInterceptor(index: number): boolean;
@@ -37,6 +37,7 @@ export declare abstract class AbstractRequestHandler {
     isMethodValid(method: string): boolean;
     isValidEndpoint(input: any): boolean;
     trimSlashes(input: string): string;
+    toJSON(): JsonObject;
     toString(): string;
     protected setBaseUrl(url: string): void;
 }

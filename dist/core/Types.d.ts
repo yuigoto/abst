@@ -14,6 +14,7 @@ export declare type ListObject = {
 export declare type RequestEndpoint = {
     url: string;
     method: string[];
+    required?: string[];
 };
 export declare type StringHash = {
     [key: string]: string;
