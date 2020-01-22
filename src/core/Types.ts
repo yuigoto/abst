@@ -44,7 +44,8 @@ export type ListObject = {
  */
 export type RequestEndpoint = {
   url: string,
-  method: string[]
+  method: string[],
+  required?: string[]
 };
 
 /**
