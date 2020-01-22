@@ -244,16 +244,16 @@ export abstract class AbstractRequestHandler {
    * @param headers
    *     Object containing key/pair values to use as request headers, they will
    *     be added to the class headers object, overriding existing ones
-   * @param params 
-   *     Object containing key/pair values to use as URL parameters, when the 
-   *     `url` in your `endpoint` required them
+   * @param required 
+   *     Array containing key values to be considered as required fields 
+   *     inside the `data` object, it's optional 
    */
   public abstract requestUrl (
     url: string,
     data: any,
     method: string,
     headers?: StringHash,
-    params?: StringHash
+    required?: string[]
   ): Promise<any>;
   
   /**
