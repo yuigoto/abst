@@ -190,6 +190,12 @@ var AbstractRequestHandler = (function () {
     AbstractRequestHandler.prototype.trimSlashes = function (input) {
         return input.replace(/(^\/|\/$)/g, "");
     };
+    AbstractRequestHandler.prototype.toJSON = function () {
+        return {
+            baseUrl: this.baseUrl,
+            headers: this.headers
+        };
+    };
     AbstractRequestHandler.prototype.toString = function () {
         return "[object " + this.constructor.name + "]";
     };
