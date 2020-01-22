@@ -18,7 +18,7 @@ export declare abstract class AbstractRequestHandler {
     get resultInterceptors(): Interceptor[];
     set resultInterceptors(value: Interceptor[]);
     abstract request(endpoint: RequestEndpoint, data: any, method: string, headers?: StringHash, params?: StringHash): Promise<any>;
-    abstract requestUrl(url: string, data: any, method: string, headers?: StringHash, params?: StringHash): Promise<any>;
+    abstract requestUrl(url: string, data: any, method: string, headers?: StringHash, required?: string[]): Promise<any>;
     addDataInterceptor(interceptor: Interceptor): number | boolean;
     applyDataInterceptors(data: any): any;
     removeDataInterceptor(index: number): boolean;
