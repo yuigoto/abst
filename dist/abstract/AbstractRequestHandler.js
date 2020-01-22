@@ -13,8 +13,8 @@ var AbstractRequestHandler = (function () {
             throw new TypeError("Abstract class '" + name + "' cannot be instantiated on its own.");
         }
         var methodList = [
-            ["request", "endpoint, data, method, headers"],
-            ["requestUrl", "url, data, method, headers"]
+            ["request", "endpoint, data, method, headers, params"],
+            ["requestUrl", "url, data, method, headers, params"]
         ];
         for (var n = 0; n < methodList.length; n++) {
             var _method = methodList[n];

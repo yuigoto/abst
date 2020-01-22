@@ -99,8 +99,8 @@ export abstract class AbstractRequestHandler {
      * - 1: the method parameters, separated by commas;
      */
     let methodList: any[] = [
-      ["request", "endpoint, data, method, headers"],
-      ["requestUrl", "url, data, method, headers"]
+      ["request", "endpoint, data, method, headers, params"],
+      ["requestUrl", "url, data, method, headers, params"]
     ];
     
     // Check method existence
