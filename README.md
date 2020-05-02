@@ -1,13 +1,19 @@
-`@yuigoto/abst`
-===============
+# `@yuigoto/abst`
 
 > Exposes abstract interfaces/classes for general use and standardization of object types and other utilities.
 
-> **IMPORTANT!**:
-> Library source was updated to use TypeScript, so there might have breaking changes! Updating documentation as soon as I can!.
+    IMPORTANT:
+    Library source was updated to use TypeScript, so there might have breaking changes! Updating documentation as soon as I can!.
 
-Using
------
+----------------------------------------------------------------------
+
+## Dependencies
+
+- `@yuigoto/validators`
+
+----------------------------------------------------------------------
+
+## How To
 
 Install it through `npm` with:
 
@@ -25,36 +31,24 @@ export class LocalStore extends AbstractStore {
 }
 ```
 
------
+----------------------------------------------------------------------
 
-Documentation
--------------
+## Docs
 
-Please, see the [**wiki**](https://github.com/yuigoto/abst/wiki)
+Please, see the [**wiki**](https://github.com/yuigoto/abst/wiki).
 
------
+----------------------------------------------------------------------
 
-Authors
--------
+## Authors
 
-See `AUTHORS.md`.
+See `AUTHORS.md` for more information.
 
------
+----------------------------------------------------------------------
 
-License
--------
+## License
 
-The code in this repository is licensed under the `MIT License`. Check the `LICENSE.md` file for details on it.
+This project is licensed under the `MIT License`. See `LICENSE.md` for more details on the subjects of the license.
 
------
+----------------------------------------------------------------------
 
 _©2019-2020 Fabio Y. Goto_
-
------
-
-Documentation
--------------
-
-> **IMPORTANT:**
-> 
-> All classes documented here can't be directly instantiated. Constructor documentation provided for information only.
