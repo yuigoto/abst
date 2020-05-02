@@ -1,10 +1,5 @@
-Authors
-=======
+# `@yuigoto/abst` | Authors
 
-- **Fabio Y. Goto** ([lab@yuiti.dev][0])
+    - **AuthorName** (emailAddress) - Location - _Role_
 
-## Contribuições
-
-None! :cold_sweat:
-
-[0]: mailto:lab@yuiti.dev
+- **Fabio Y. Goto** (lab@yuiti.dev) - São Paulo, BR - _Developer_
