@@ -1,4 +1,4 @@
-import { AbstractSingleton } from "../abstract/AbstractSingleton";
+import { AbstractSingleton } from "./AbstractSingleton";
 import { 
   ListObject, 
   ListObjectItem, 
